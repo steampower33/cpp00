@@ -1,25 +1,26 @@
 NAME = megaphone
 SRCS = megaphone.cpp
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:.cpp=.o)
 CC = g++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 
-%.o: %.c
-	$(CC) $(CFLAGS)  -o $@ -c $<
+%.o: %.cpp
+	$(CC) $(CPPFLAGS) -o $@ -c $<
 
 $(NAME): $(OBJS)
 	$(CC) $(OBJS) -o $(NAME)
 
 all: $(NAME)
+
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
 
 re:
-	$(MAKE) fclean
-	$(MAKE)
+	@make fclean
+	@make
 
 .PHONY: all clean fclean re
