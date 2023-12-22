@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 		{
 			for (int j = 0; argv[i][j]; j++)
 			{
-				out::outChar = argv[i][j];
+				out::outChar = std::toupper(argv[i][j]);
 				std::cout << out::outChar;
 			}
 		}
