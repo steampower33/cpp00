@@ -7,6 +7,7 @@ class Contact {
 public:
 	void AddContact(void);
 	void DisplayContactWithDot(void);
+	void DisplayContactDetailed(void);
 private:
 	std::string first_name;
 	std::string last_name;
