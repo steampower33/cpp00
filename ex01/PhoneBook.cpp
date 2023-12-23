@@ -7,8 +7,13 @@ PhoneBook::PhoneBook()
 
 void PhoneBook::add()
 {
-	this->contact[this->idx % 8].AddContact();
-	this->idx += 1;
+	if (this->idx == 8)
+		this->contact[7].AddContact();
+	else
+	{
+		this->contact[this->idx % 8].AddContact();
+		this->idx += 1;
+	}
 }
 
 void PhoneBook::DisplayStringRightAligned(std::string str)
@@ -44,7 +49,7 @@ void PhoneBook::search()
 	number = -1;
 	std::cout << "Choose the number of PhoneBook" << std::endl;
 	std::cin >> number;
-	if (std::cin.fail())
+	if (std::cin.fail() || std::cin.eof())
 	{
 		std::cout << "Please, enter the right number" << std::endl;
 		std::cin.clear();

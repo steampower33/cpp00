@@ -3,46 +3,55 @@
 void Contact::AddContact(void)
 {
 	std::cout << "Enter The First Name : ";
-	std::cin >> this->first_name;
+	std::getline(std::cin, this->first_name);
+	if (std::cin.fail() || std::cin.eof())
+	{
+		return ;
+	}
 	std::cout << "Enter The Last Name : ";
-	std::cin >> this->last_name;
+	std::getline(std::cin, this->last_name);
 	std::cout << "Enter The Nick Name : ";
-	std::cin >> this->nick_name;
+	std::getline(std::cin, this->nick_name);
 	std::cout << "Enter The Phone Number : ";
-	std::cin >> this->phone_number;
+	std::getline(std::cin, this->phone_number);
 	std::cout << "Enter The Darkest Secret : ";
-	std::cin >> this->darkest_secret;
+	std::getline(std::cin, this->darkest_secret);
 }
 
 void Contact::DisplayContactWithDot()
 {
-	if (this->first_name.length() >= 10)
+	int	length;
+
+	length = static_cast<int>(this->first_name.length());
+	if (length >= 10)
 		std::cout << this->first_name.substr(0, 9) + "." + "|";
 	else
 	{
-		for (size_t i = 0; i < 10 - this->first_name.length(); i++)
+		for (int i = 0; i < 10 - length; i++)
 			std::cout << " ";
-		for (size_t i = 0; i < this->first_name.length(); i++)
+		for (int i = 0; i < length; i++)
 			std::cout << this->first_name[i];
 		std::cout << "|";
 	}
-	if (this->last_name.length() >= 10)
+	length = static_cast<int>(this->last_name.length());
+	if (length >= 10)
 		std::cout << this->first_name.substr(0, 9) + "." + "|";
 	else
 	{
-		for (size_t i = 0; i < 10 - this->last_name.length(); i++)
+		for (int i = 0; i < 10 - length; i++)
 			std::cout << " ";
-		for (size_t i = 0; i < this->last_name.length(); i++)
+		for (int i = 0; i < length; i++)
 			std::cout << this->last_name[i];
 		std::cout << "|";
 	}
-	if (this->nick_name.length() >= 10)
+	length = static_cast<int>(this->last_name.length());
+	if (length >= 10)
 		std::cout << this->nick_name.substr(0, 9) + "." + "|";
 	else
 	{
-		for (size_t i = 0; i < 10 - this->nick_name.length(); i++)
+		for (int i = 0; i < 10 - length; i++)
 			std::cout << " ";
-		for (size_t i = 0; i < this->nick_name.length(); i++)
+		for (int i = 0; i < length; i++)
 			std::cout << this->nick_name[i];
 		std::cout << "|";
 	}

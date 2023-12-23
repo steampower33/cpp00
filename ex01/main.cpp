@@ -3,13 +3,13 @@
 
 int main(void)
 {
-	std::string	cmd;
 	PhoneBook	phone_book;
+	std::string	cmd;
 
 	while (true)
 	{
 		std::cout << "Please, Enter The Comamand : ADD or SEARCH or EXIT" << std::endl;
-		std::cin >> cmd;
+		std::getline(std::cin, cmd);
 		if (cmd == "ADD")
 			phone_book.add();
 		else if (cmd == "SEARCH")
@@ -18,6 +18,11 @@ int main(void)
 			break ;
 		else
 			std::cout << "Please, Enter The Right Command" << std::endl;
+		if (std::cin.fail() || std::cin.eof())
+		{
+			std::cout << "An Error Has Occurred" << std::endl;
+			break ;
+		}
 	}
 	return 0;
 }
