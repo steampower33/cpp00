@@ -1,4 +1,3 @@
-#include <iostream>
 #include "PhoneBook.hpp"
 
 int main(void)
@@ -9,7 +8,12 @@ int main(void)
 	while (true)
 	{
 		std::cout << "Please, Enter The Comamand : ADD or SEARCH or EXIT" << std::endl;
-		std::getline(std::cin, cmd);
+		std::cin >> cmd;
+		if (std::cin.eof())
+		{
+			std::cout << "EOF" << std::endl;
+			break ;
+		}
 		if (cmd == "ADD")
 			phone_book.add();
 		else if (cmd == "SEARCH")
@@ -18,9 +22,9 @@ int main(void)
 			break ;
 		else
 			std::cout << "Please, Enter The Right Command" << std::endl;
-		if (std::cin.fail() || std::cin.eof())
+		if (std::cin.eof())
 		{
-			std::cout << "An Error Has Occurred" << std::endl;
+			std::cout << "EOF" << std::endl;
 			break ;
 		}
 	}
