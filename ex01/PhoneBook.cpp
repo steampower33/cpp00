@@ -31,13 +31,22 @@ void PhoneBook::search()
 		std::cout << "|" << "         " << i << "|";
 		this->contact[i].DisplayContactWithDot();
 	}
-	std::cout << "Choose the number of PhoneBook (0 ~ 7)" << std::endl;
+	std::cout << "Choose the number of PhoneBook" << std::endl;
 	std::cin >> number;
 	if (std::cin.eof())
 		return ;
-	else if (!(0 <= number && number < 8 && number < this->idx) || std::cin.fail())
+	else if (!(0 <= number && number < 8))
 	{
-		std::cout << "Please, Enter the number (0 ~ 7)" << std::endl;
+		std::cout << "Please, Enter the right index number" << std::endl;
+		return ;
+	}
+	else if (number >= this->idx)
+	{
+		std::cout << "Please, Enter the exist index number" << std::endl;
+		return ;
+	}
+	else if (std::cin.fail())
+	{
 		std::cin.clear();
 		std::cin.ignore(100, '\n');
 		return ;
