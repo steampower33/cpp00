@@ -2,17 +2,17 @@
 
 PhoneBook::PhoneBook()
 {
-	this->idx = 0;
+	idx = 0;
 }
 
 void PhoneBook::add()
 {
-	if (this->idx == 8)
-		this->contact[7].AddContact();
+	if (idx == 8)
+		contact[7].AddContact();
 	else
 	{
-		this->contact[this->idx % 8].AddContact();
-		this->idx += 1;
+		contact[idx % 8].AddContact();
+		idx += 1;
 	}
 }
 
@@ -20,16 +20,16 @@ void PhoneBook::search()
 {
 	int number;
 
-	if (this->idx == 0)
+	if (idx == 0)
 	{
 		std::cout << "PhoneBook is Empty" << std::endl;
 		return ;
 	}
 	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
-	for (int i = 0; i < this->idx; i++)
+	for (int i = 0; i < idx; i++)
 	{
 		std::cout << "|" << "         " << i << "|";
-		this->contact[i].DisplayContactWithDot();
+		contact[i].DisplayContactWithDot();
 	}
 	std::cout << "Choose the number of PhoneBook" << std::endl;
 	std::cin >> number;
@@ -40,7 +40,7 @@ void PhoneBook::search()
 		std::cout << "Please, Enter the right index number" << std::endl;
 		return ;
 	}
-	else if (number >= this->idx)
+	else if (number >= idx)
 	{
 		std::cout << "Please, Enter the exist index number" << std::endl;
 		return ;
@@ -51,5 +51,5 @@ void PhoneBook::search()
 		std::cin.ignore(100, '\n');
 		return ;
 	}
-	this->contact[number].DisplayContactDetailed();
+	contact[number].DisplayContactDetailed();
 }
